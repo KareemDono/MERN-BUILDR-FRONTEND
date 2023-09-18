@@ -40,7 +40,7 @@ const HomeTabNavigator = () => {
             tabBarIcon: ({ color }) => (
               <Icon
                 name='home'
-                style={{ position: 'relative' }}
+                style={{ position: 'relative',}}
                 color={color}
                 size={30}
               />

@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 5,
     marginRight: 5,
+    marginTop: 20,
+    marginBottom: 20,
   },
   input: {
     width: width,

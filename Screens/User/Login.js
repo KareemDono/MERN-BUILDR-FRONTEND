@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
 import FormContainer from '../../Shared/Form/FormContainer';
 import Input from '../../Shared/Form/Input';
 import Error from '../../Shared/Error';
@@ -32,46 +32,56 @@ const Login = (props) => {
       loginUser(user, context.dispatch);
     }
   };
+
   return (
-    <FormContainer title={'Login'}>
-      <Input
-        placeholder={'Enter Email'}
-        name={'email'}
-        id={'email'}
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-      />
-      <Input
-        placeholder={'Enter Password'}
-        name={'password'}
-        id={'password'}
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text) => setPassword(text.toLowerCase())}
-      />
-      <View style={styles.buttonGroup}>
-        {error ? <Error message={error} /> : null}
-        <StyledButton large primary onPress={() => handleSubmit()}>
-          <Text style={styles.btnText}>Login</Text>
-        </StyledButton>
-      </View>
-      <View style={[{ marginTop: 40 }, styles.buttonGroup]}>
-        <Text style={styles.middleText}>Don't have an account yet?</Text>
-        <StyledButton
-          large
-          secondary
-          onPress={() => props.navigation.navigate('Register')}
-        >
-          <Text style={styles.btnText}>Register</Text>
-        </StyledButton>
-      </View>
-    </FormContainer>
+    <ScrollView contentContainerStyle={styles.container}>
+      <FormContainer title={'Login'}>
+        <Input
+          placeholder={'Enter Email'}
+          name={'email'}
+          id={'email'}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <Input
+          placeholder={'Enter Password'}
+          name={'password'}
+          id={'password'}
+          secureTextEntry={true}
+          value={password}
+          onChangeText={(text) => setPassword(text.toLowerCase())}
+        />
+        <View style={styles.buttonGroup}>
+          {error ? <Error message={error} /> : null}
+          <StyledButton large primary onPress={() => handleSubmit()}>
+            <Text style={styles.btnText}>Login</Text>
+          </StyledButton>
+        </View>
+        <View style={styles.registerButtonContainer}>
+          <Text style={styles.middleText}>Don't have an account yet?</Text>
+          <StyledButton
+            large
+            secondary
+            onPress={() => props.navigation.navigate('Register')}
+          >
+            <Text style={styles.btnText}>Register</Text>
+          </StyledButton>
+        </View>
+      </FormContainer>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
+    marginTop: 200,
+  },
   buttonGroup: {
-    width: '80%',
+    width: '100%',
     alignItems: 'center',
   },
   middleText: {
@@ -80,8 +90,12 @@ const styles = StyleSheet.create({
   },
   btnText: {
     alignSelf: 'center',
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
+  },
+  registerButtonContainer: {
+    marginTop: 20,
+    alignItems: 'center',
   },
 });
 

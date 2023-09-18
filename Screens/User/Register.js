@@ -15,6 +15,7 @@ const Register = (props) => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState();
+
   const register = () => {
     if (email === '' || name === '' || password === '' || phone === '') {
       setError('Please include all fields');
@@ -56,6 +57,7 @@ const Register = (props) => {
 
   return (
     <KeyboardAwareScrollView
+      contentContainerStyle={styles.container}
       viewIsInsideTabBar={true}
       extraHeight={200}
       enableOnAndroid={true}
@@ -110,7 +112,15 @@ const Register = (props) => {
     </KeyboardAwareScrollView>
   );
 };
+
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    marginTop: 200,
+  },
   buttonGroup: {
     width: '80%',
     margin: 10,
@@ -118,7 +128,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     alignSelf: 'center',
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
   },
 });
